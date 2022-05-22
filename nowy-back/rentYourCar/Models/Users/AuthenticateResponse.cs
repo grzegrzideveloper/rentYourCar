@@ -12,4 +12,6 @@ public class AuthenticateResponse
     public string PostalCode { get; set; }
     public string Token { get; set; }
     public bool Admin { get; set; }
+
+    public bool? IsActive { get; set; }
 }

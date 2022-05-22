@@ -26,13 +26,13 @@ namespace WebApi.Migrations.SqliteMigrations
                     b.Property<int>("CarId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateOnly>("EndDate")
+                    b.Property<string>("EndDate")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateOnly>("StartDate")
+                    b.Property<string>("StartDate")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("UserId")
@@ -104,6 +104,9 @@ namespace WebApi.Migrations.SqliteMigrations
 
                     b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("LastName")
                         .HasColumnType("TEXT");

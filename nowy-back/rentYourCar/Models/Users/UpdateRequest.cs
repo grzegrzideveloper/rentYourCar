@@ -19,4 +19,6 @@ public class UpdateRequest
     public string Password { get; set; }
 
     public bool? Admin { get; set; } = null;
+
+    public bool? IsActive { get; set; } = null;
 }

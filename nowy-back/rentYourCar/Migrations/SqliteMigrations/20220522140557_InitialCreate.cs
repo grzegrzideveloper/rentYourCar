@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -17,8 +16,8 @@ namespace WebApi.Migrations.SqliteMigrations
                         .Annotation("Sqlite:Autoincrement", true),
                     CarId = table.Column<int>(type: "INTEGER", nullable: false),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false),
-                    StartDate = table.Column<DateOnly>(type: "TEXT", nullable: false),
-                    EndDate = table.Column<DateOnly>(type: "TEXT", nullable: false),
+                    StartDate = table.Column<string>(type: "TEXT", nullable: true),
+                    EndDate = table.Column<string>(type: "TEXT", nullable: true),
                     IsActive = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -63,7 +62,8 @@ namespace WebApi.Migrations.SqliteMigrations
                     City = table.Column<string>(type: "TEXT", nullable: true),
                     PostalCode = table.Column<string>(type: "TEXT", nullable: true),
                     PasswordHash = table.Column<string>(type: "TEXT", nullable: true),
-                    Admin = table.Column<bool>(type: "INTEGER", nullable: true)
+                    Admin = table.Column<bool>(type: "INTEGER", nullable: true),
+                    IsActive = table.Column<bool>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {

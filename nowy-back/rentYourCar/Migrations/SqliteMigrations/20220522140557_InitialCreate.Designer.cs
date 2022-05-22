@@ -11,7 +11,7 @@ using WebApi.Helpers;
 namespace WebApi.Migrations.SqliteMigrations
 {
     [DbContext(typeof(SqliteDataContext))]
-    [Migration("20220503111831_InitialCreate")]
+    [Migration("20220522140557_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,13 +28,13 @@ namespace WebApi.Migrations.SqliteMigrations
                     b.Property<int>("CarId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateOnly>("EndDate")
+                    b.Property<string>("EndDate")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateOnly>("StartDate")
+                    b.Property<string>("StartDate")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("UserId")
@@ -106,6 +106,9 @@ namespace WebApi.Migrations.SqliteMigrations
 
                     b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("LastName")
                         .HasColumnType("TEXT");

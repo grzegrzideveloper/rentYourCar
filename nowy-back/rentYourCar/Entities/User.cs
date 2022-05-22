@@ -17,4 +17,6 @@ public class User
     public string PasswordHash { get; set; }
 
     public bool? Admin { get; set; }
+
+    public bool? IsActive { get; set; } 
 }
