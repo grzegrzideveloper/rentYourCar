@@ -41,6 +41,8 @@ public class UserService : IUserService
         if (user == null || !BCrypt.Verify(model.Password, user.PasswordHash))
             throw new AppException("Username or password is incorrect");
 
+        if (user.IsActive == false)
+            throw new AppException("user is not active!");
         // authentication successful
         var response = _mapper.Map<AuthenticateResponse>(user);
         response.Token = _jwtUtils.GenerateToken(user);
