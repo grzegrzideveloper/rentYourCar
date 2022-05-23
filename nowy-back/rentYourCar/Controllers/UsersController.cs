@@ -43,6 +43,7 @@ public class UsersController : ControllerBase
         return Ok(new { message = "Registration successful" });
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public IActionResult GetAll()
     {
