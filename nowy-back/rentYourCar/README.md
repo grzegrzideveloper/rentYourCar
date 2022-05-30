@@ -1,3 +1,9 @@
+
+api, for car renting website, build for an assignment.
+
+
+api based on:
+
 # dotnet-6-registration-login-api
 
 .NET 6.0 - User Registration and Login Tutorial with Example API
