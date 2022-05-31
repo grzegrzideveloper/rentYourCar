@@ -31,7 +31,7 @@ public class CarsController : ControllerBase
     [HttpPost("AddCar")]
     public async Task<IActionResult> AddCar([FromForm] AddRequest model)
     {
-        var car = _mapper.Map<Car>(model);
+        var car = _mapper.Map<Car>(model);    
         car.IsActive = true;
 
         car.ImageName = await SaveImage(model.ImageFile);
