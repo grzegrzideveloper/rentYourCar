@@ -119,7 +119,7 @@ public class CarsController : ControllerBase
                (string.IsNullOrEmpty(model.Brand) || car.Brand.Contains(model.Brand))
             && (string.IsNullOrEmpty(model.Model) || car.Model.Contains(model.Model))
             && (string.IsNullOrEmpty(model.NumPassangers) || car.NumPassangers.Contains(model.NumPassangers)) 
-            && (string.IsNullOrEmpty(model.Transmission) || car.Transmission == model.Transmission)
+            && (string.IsNullOrEmpty(model.Transmission) || car.Transmission.Contains(model.Transmission))
             && (string.IsNullOrEmpty(model.Adress) || car.Adress.Contains(model.Adress))
             && (string.IsNullOrEmpty(model.City) || car.City.Contains(model.City))
             && (string.IsNullOrEmpty(model.PostalCode) || car.PostalCode.Contains(model.PostalCode))
