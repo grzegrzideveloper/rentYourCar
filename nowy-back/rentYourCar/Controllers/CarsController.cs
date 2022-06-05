@@ -123,7 +123,8 @@ public class CarsController : ControllerBase
             && (string.IsNullOrEmpty(model.Adress) || car.Adress.Contains(model.Adress))
             && (string.IsNullOrEmpty(model.City) || car.City.Contains(model.City))
             && (string.IsNullOrEmpty(model.PostalCode) || car.PostalCode.Contains(model.PostalCode))
-            && (model.MaxPricePerDay == null || car.PricePerDay >= model.MaxPricePerDay)
+            && (model.MaxPricePerDay == null || car.PricePerDay <= model.MaxPricePerDay)
+            && (model.MinPricePerDay == null || car.PricePerDay >= model.MinPricePerDay)
             ).Select(car => new GetResponse()
             {
                 Id = car.Id,
