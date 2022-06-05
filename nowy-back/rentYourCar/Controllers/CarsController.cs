@@ -111,6 +111,38 @@ public class CarsController : ControllerBase
             .ToListAsync();
     }
 
+    [HttpGet("search")]
+    public async Task<ActionResult<IEnumerable<GetResponse>>> SearchCar(SearchCarRequest model)
+    {
+        return await _context.Cars
+            .Where(car =>  
+               (string.IsNullOrEmpty(model.Brand) || car.Brand.Contains(model.Brand))
+            && (string.IsNullOrEmpty(model.Model) || car.Model.Contains(model.Model))
+            && (string.IsNullOrEmpty(model.NumPassangers) || car.NumPassangers.Contains(model.NumPassangers)) 
+            && (string.IsNullOrEmpty(model.Transmission) || car.Transmission == model.Transmission)
+            && (string.IsNullOrEmpty(model.Adress) || car.Adress.Contains(model.Adress))
+            && (string.IsNullOrEmpty(model.City) || car.City.Contains(model.City))
+            && (string.IsNullOrEmpty(model.PostalCode) || car.PostalCode.Contains(model.PostalCode))
+            && (model.PricePerDay == null || car.PricePerDay == model.PricePerDay)
+            ).Select(car => new GetResponse()
+            {
+                Id = car.Id,
+                UserId = car.UserId,
+                Brand = car.Brand,
+                Model = car.Model,
+                NumPassangers = car.NumPassangers,
+                Transmission = car.Transmission,
+                PricePerDay = car.PricePerDay,
+                Adress = car.Adress,
+                City = car.City,
+                PostalCode = car.PostalCode,
+                IsActive = car.IsActive,
+                ImageName = car.ImageName,
+                ImageUrl = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, car.ImageName)
+            })
+            .ToListAsync();
+    }
+
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, [FromForm] UpdateCarRequest model)
     {
