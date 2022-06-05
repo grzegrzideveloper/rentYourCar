@@ -32,12 +32,29 @@ public class ReviewsController : ControllerBase
     [HttpGet("{id}")]
     public IActionResult GetById(int id)
     {
-        var report = _context.Reviews.Find(id);
-        if (report == null) throw new KeyNotFoundException("Review not found!");
-        return Ok(report);
+        var model = _context.Reviews.Find(id);
+        if (model == null) throw new KeyNotFoundException("Review not found!");
+        return Ok(model);
 
     }
 
+    [HttpGet("car/{id}")]
+    public IEnumerable<Review> GetByCar(int id)
+    {
+        var model = _context.Reviews.Where(review => review.CarId == id);
+        if (model == null) throw new KeyNotFoundException("Review not found!");
+        return model;
+
+    }
+
+    [HttpGet("user/{id}")]
+    public IEnumerable<Review> GetByUser(int id)
+    {
+        var model = _context.Reviews.Where(review => review.UserId == id);
+        if (model == null) throw new KeyNotFoundException("Review not found!");
+        return model;
+
+    }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)

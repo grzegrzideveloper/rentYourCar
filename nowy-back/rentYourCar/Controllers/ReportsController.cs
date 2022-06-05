@@ -37,6 +37,24 @@ public class ReportsController : ControllerBase
 
     }
 
+    [HttpGet("user/{id}")]
+    public IEnumerable<Report> GetByUser(int id)
+    {
+        var report = _context.Reports.Where(report => report.UserId == id); ;
+        if (report == null) throw new KeyNotFoundException("Report not found!");
+        return report;
+
+    }
+
+    [HttpGet("car/{id}")]
+    public IEnumerable<Report> GetByCar(int id)
+    {
+        var report = _context.Reports.Where(report => report.CarId == id); ;
+        if (report == null) throw new KeyNotFoundException("Report not found!");
+        return report;
+
+    }
+
     [HttpPut("{id}")]
     public IActionResult Update(int id, bool state)
     {
