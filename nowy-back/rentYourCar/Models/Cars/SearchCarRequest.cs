@@ -6,7 +6,7 @@
         public string Model { get; set; }
         public string NumPassangers { get; set; }
         public string Transmission { get; set; }
-        public int? PricePerDay { get; set; }
+        public int? MaxPricePerDay { get; set; }
         public string Adress { get; set; }
         public string City { get; set; }
         public string PostalCode { get; set; }
