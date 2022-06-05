@@ -111,7 +111,7 @@ public class CarsController : ControllerBase
             .ToListAsync();
     }
 
-    [HttpGet("search")]
+    [HttpPost("search")]
     public async Task<ActionResult<IEnumerable<GetResponse>>> SearchCar(SearchCarRequest model)
     {
         return await _context.Cars
