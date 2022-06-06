@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\nowy-back",
+    "\\nowy-back\\rentYourCar",
+    "\\nowy-back\\rentYourCar\\Controllers"
   ],
-  "SelectedNode": "\\C:\\Users\\kkraj\\Source\\Repos\\rentYourCar",
+  "SelectedNode": "\\nowy-back\\rentYourCar\\Controllers\\CarsController.cs",
   "PreviewInSolutionExplorer": false
 }

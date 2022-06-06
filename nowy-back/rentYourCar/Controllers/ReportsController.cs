@@ -56,17 +56,17 @@ public class ReportsController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public IActionResult Update(int id, bool state)
+    public IActionResult Update(int id, Report model)
     {
         var report = _context.Reports.Find(id);
         if (report == null) throw new KeyNotFoundException("Report not found!");
 
-        report.Resolved = state;
+        report.Resolved = model.Resolved;
 
         _context.Reports.Update(report);
         _context.SaveChanges();
 
-        return Ok();
+        return Ok(report);
     }
 
     [HttpDelete("{id}")]
