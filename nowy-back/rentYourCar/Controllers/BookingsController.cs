@@ -46,6 +46,19 @@ public class BookingsController : ControllerBase
     [HttpGet]
     public IEnumerable<Booking> GetAll()
     {
+        var bookings = _context.Bookings;
+
+        foreach(Booking booking in bookings)
+        {
+            if(DateTime.Parse(booking.EndDate) <= DateTime.Today.AddDays(-2))
+            {
+                booking.IsActive = false;
+            }
+
+            _context.Bookings.Update(booking);
+            _context.SaveChanges();
+        }
+
         return _context.Bookings;
     }
 
