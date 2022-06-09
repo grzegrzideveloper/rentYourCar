@@ -46,7 +46,7 @@ public class BookingsController : ControllerBase
     [HttpGet]
     public IEnumerable<Booking> GetAll()
     {
-        var bookings = _context.Bookings;
+        var bookings = _context.Bookings.Where(booking => booking.IsActive==true);
 
         foreach(Booking booking in bookings)
         {
