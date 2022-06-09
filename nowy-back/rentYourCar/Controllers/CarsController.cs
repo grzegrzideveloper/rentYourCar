@@ -44,6 +44,23 @@ public class CarsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<GetResponse>>> GetAll()
     {
+        var bookings = _context.Bookings;
+
+        foreach(Booking booking in bookings)
+        {
+            var car = getCar(booking.CarId);
+            if (DateTime.Parse(booking.StartDate) <= DateTime.Today && DateTime.Parse(booking.EndDate) >= DateTime.Today)
+            {
+
+                car.IsActive = false;
+
+            }
+            else car.IsActive = true;
+
+            _context.Cars.Update(car);
+            _context.SaveChanges();
+        }
+
         return await _context.Cars
             .Select(car => new GetResponse(){
             Id = car.Id,
@@ -61,6 +78,7 @@ public class CarsController : ControllerBase
             ImageUrl = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, car.ImageName)
             })
             .ToListAsync();
+
     }
 
     [HttpGet("{id}")]
