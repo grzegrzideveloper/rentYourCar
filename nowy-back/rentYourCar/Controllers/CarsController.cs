@@ -49,7 +49,7 @@ public class CarsController : ControllerBase
         foreach(Booking booking in bookings)
         {
             var car = getCar(booking.CarId);
-            if (DateTime.Parse(booking.StartDate) <= DateTime.Today && DateTime.Parse(booking.EndDate) >= DateTime.Today)
+            if (DateTime.Parse(booking.StartDate) <= DateTime.Today.AddDays(-2) && DateTime.Parse(booking.EndDate) >= DateTime.Today.AddDays(2))
             {
 
                 car.IsActive = false;
